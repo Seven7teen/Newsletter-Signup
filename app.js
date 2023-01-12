@@ -3,6 +3,8 @@ const request = require("request");
 const bodyParser = require("body-parser");
 const https = require("https");
 
+require('dotenv').config();
+
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -38,7 +40,7 @@ app.post("https://newsletter-signup-tmjm.onrender.com", function(req,res) {
 
   const options = {
     method: "POST",
-    auth: "Aditya:25d84883037e09a6857a07c42659ce72-us8"
+    auth: "Aditya:"+process.env.API_KEY;
   }
 
   const request = https.request(url, options, function(response) {
