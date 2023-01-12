@@ -40,7 +40,7 @@ app.post("https://newsletter-signup-tmjm.onrender.com", function(req,res) {
 
   const options = {
     method: "POST",
-    auth: "Aditya:"+process.env.API_KEY
+    auth: "Aditya:3360cc49910bde34a96e3329af291dbe-us8"
   }
 
   const request = https.request(url, options, function(response) {
