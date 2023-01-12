@@ -8,12 +8,12 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-app.get("/", function(req,res) {
+app.get("https://newsletter-signup-tmjm.onrender.com", function(req,res) {
   res.sendFile(__dirname + "/signup.html");
 })
 
 
-app.post("/", function(req,res) {
+app.post("https://newsletter-signup-tmjm.onrender.com", function(req,res) {
   const first = req.body.first;
   const last = req.body.last;
   const email = req.body.email;
@@ -60,8 +60,8 @@ app.post("/", function(req,res) {
 
 })
 
-app.post("/failure", function(req,res) {
-  res.redirect("/");
+app.post("https://newsletter-signup-tmjm.onrender.com/failure", function(req,res) {
+  res.redirect("https://newsletter-signup-tmjm.onrender.com");
 })
 
 app.listen(process.env.PORT || 3000, () => {
