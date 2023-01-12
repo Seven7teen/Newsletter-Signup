@@ -63,11 +63,13 @@ app.post("https://newsletter-signup-tmjm.onrender.com", function(req,res) {
 })
 
 app.post("https://newsletter-signup-tmjm.onrender.com/failure", function(req,res) {
+
   res.redirect("https://newsletter-signup-tmjm.onrender.com");
+
 })
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log("Server is running on port 3000");
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
 
 
