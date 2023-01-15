@@ -7,15 +7,18 @@ require('dotenv').config();
 
 const app = express();
 
+const API_KEY = process.env.API_KEY;
+const port = process.env.PORT || 3000;
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-app.get("https://newsletter-signup-tmjm.onrender.com", function(req,res) {
+app.get("/", function(req,res) {
   res.sendFile(__dirname + "/signup.html");
 })
 
 
-app.post("https://newsletter-signup-tmjm.onrender.com", function(req,res) {
+app.post("/", function(req,res) {
   const first = req.body.first;
   const last = req.body.last;
   const email = req.body.email;
@@ -40,7 +43,7 @@ app.post("https://newsletter-signup-tmjm.onrender.com", function(req,res) {
 
   const options = {
     method: "POST",
-    auth: "Aditya:3360cc49910bde34a96e3329af291dbe-us8"
+    auth: "Aditya:"+API_KEY
   }
 
   const request = https.request(url, options, function(response) {
@@ -62,14 +65,14 @@ app.post("https://newsletter-signup-tmjm.onrender.com", function(req,res) {
 
 })
 
-app.post("https://newsletter-signup-tmjm.onrender.com/failure", function(req,res) {
+app.post("/failure", function(req,res) {
 
-  res.redirect("https://newsletter-signup-tmjm.onrender.com");
+  res.redirect("/");
 
 })
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
 
